@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="icon" type="image/png" href="./assets/logoa1-min.png">
+    <title>Vardagslyster</title>
+</head>
+
+<body>
+    <main>
+            
+        <video autoplay muted loop id="myVideo">
+            <source src="./assets/6197563-uhd_3840_2160_25fps.mp4" type="video/mp4">
+        </video>
+        <div class="filter"></div>
+        
+
+        <div class="container">
+            <header>
+                <div class="header-box left">
+                    <a href="./index.html" class="header-logo">
+                        <img src="./assets/logoa1-min.png" width="70px" alt="">
+                        <h1>Vardagslyster</h1>
+                    </a>
+                </div>
+                <div class="header-box right">
+                    <div class="header-text">
+                        <a href="mailto:kontakt@vardagslyster.se"> Hör av dig! <span>kontakt@vardagslyster.se</span></a>
+                    </div>
+                </div>
+            </header>
+
+            <div class="dev-main">
+                <div class="dev-title">
+                    <h1>Vi jobbar på något spännande...</h1>
+                </div>
+
+                <div class="dev-under">
+                    <div class="dev-box left">
+                        <div class="countdown">
+                            <div class="single-count-content">
+                                <span class="count" id="days">00</span>
+                                <p class="count-text">Dagar</p>
+                            </div>
+                            <div class="single-count-content">
+                                <span class="count" id="hours">00</span>
+                                <p class="count-text">Timmar</p>
+                            </div>
+                            <div class="single-count-content">
+                                <span class="count" id="minutes">00</span>
+                                <p class="count-text">Minuter</p>
+                            </div>
+                            <div class="single-count-content">
+                                <span class="count" id="seconds">00</span>
+                                <p class="count-text">Sekunder</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dev-box right">
+                        <p>
+                            Vi jobbar på att förbättra vår tjänst för
+                            en enklare och snabbare bokning. Tack
+                            för ditt tålamod - vi är snart tillbaka!
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="dev-footer">
+                <div class="footer-box left">
+                    <p>© Copyright 2025 - Vardagsglans</p>
+                </div>
+
+                <div class="footer-box right">
+                    <ul>
+                        <li>
+                            <a href="https://www.facebook.com/profile.php?id=61572530804382" target="_blank" rel="noopener noreferrer">
+                                <i class="ri-instagram-line"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/vardagslyster/#" target="_blank" rel="noopener noreferrer">
+                                <i class="ri-facebook-fill"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" target="_blank" rel="noopener noreferrer">
+                                <i class="ri-linkedin-fill"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Mål datum och tid (3 mars kl 00:00)
+        const targetDate = new Date("March 3, 2025 00:00:00").getTime();
+
+        // Funktion för att uppdatera nedräkningen
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance < 0) {
+                clearInterval(interval);
+                document.querySelector(".countdown").innerHTML = "Tiden är ute!";
+                return;
+            }
+
+            // Beräkna dagar, timmar, minuter och sekunder
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Uppdatera HTML med de nya värdena
+            document.getElementById("days").textContent = days < 10 ? '0' + days : days;
+            document.getElementById("hours").textContent = hours < 10 ? '0' + hours : hours;
+            document.getElementById("minutes").textContent = minutes < 10 ? '0' + minutes : minutes;
+            document.getElementById("seconds").textContent = seconds < 10 ? '0' + seconds : seconds;
+        }
+
+        // Uppdatera nedräkningen varje sekund
+        const interval = setInterval(updateCountdown, 1000);
+
+        // Initial uppdatering vid sidladdning
+        updateCountdown();
+    </script>
+</body>
+
+</html>
