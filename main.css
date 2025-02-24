@@ -395,4 +395,7 @@ header {
         font-size: 0.8rem;
     }
 
+        .countdown .single-count-content::after {
+        right: -20px;
+    }
 }
